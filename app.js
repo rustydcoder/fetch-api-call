@@ -1,11 +1,20 @@
+let foodArr = ["shrimps.jpg", "tacos.jpg", "burger.jpg"]
 
 console.log("about to fetch burger");
-fetch("burger.jpg")
-   .then((res) => res.blob())
-   .then((img) => {
-      const source = URL.createObjectURL(img);
-      console.log(source);
-      document.getElementById("burger").setAttribute("src", source);
-   })
-   .catch(err => console.log(err))
+for (const food of foodArr) {
+   fetch(food)
+      .then(res => res.blob())
+      .then(blob => {
+         const source = URL.createObjectURL(blob);
+         const img = new Image()
+         img.src = source
+         img.width = 200
+         document.body.append(img)
+         console.log(img)
+      })
+      .catch(err => {
+         console.log("error")
+         console.log(err)
+      })
+}
 console.log("completed");
