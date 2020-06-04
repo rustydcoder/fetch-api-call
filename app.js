@@ -1,14 +1,14 @@
-let foodArr = ["shrimps.jpg", "tacos.jpg", "burger.jpg"]
+// DATA: https://data.giss.nasa.gov/gistemp/
+// CSV:  https://data.giss.nasa.gov/gistemp/tabledata_v4/ZonAnn.Ts+dSST.csv
 
-async function fetchImages(imgs) {
-   for (const img of imgs) {
-      const res = await fetch(img)
-      const blob = await res.blob()
-      const image = new Image()
-      image.src = URL.createObjectURL(blob)
-      image.width = 200
-      document.body.appendChild(image)
-   }
+getData()
+async function getData() {
+   const response = await fetch('ZonAnn.Ts+dSST.csv')
+   const data = await response.text()
+   const table = data.split('\n').slice(1)
+   table.forEach(row => {
+      const cell = row.split(',')
+      const [year, temp, kuda, ...rest] = cell
+      console.log(year, temp, kuda)
+   })
 }
-
-fetchImages(foodArr)
