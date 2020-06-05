@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data/APIs</title>
   </head>
+  <style>
+    canvas {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
   <body>
-    <canvas
-      id="myChart"
-      width="400"
-      height="300"
-      aria-label="Hello ARIA World"
-      role="img"
-    ></canvas>
+    <div style="width: 75%;">
+      <canvas id="myChart"></canvas>
+    </div>
+    <button id="add">Add Hemisphere</button>
+    <button id="remove">Remove Hemisphere</button>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="app.js"></script>
